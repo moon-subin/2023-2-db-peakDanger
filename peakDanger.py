@@ -117,7 +117,7 @@ if __name__ == '__main__':
     hikeID = None
 
     responseDanger = getPeakDangerousAreas(peakname, peakstateDanger, key)
-    print('res: ', responseDanger)    
+    print('danger res: ', responseDanger)    
 
     if responseDanger.status_code == 200:
         responseDanger_body = responseDanger.json()['response']['body']
@@ -136,7 +136,7 @@ if __name__ == '__main__':
 
     peakstateSign = "SIGN"
     peakstateSign = getPeakDangerousAreas(peakname, peakstateSign, key)
-    print('res: ', peakstateSign)    
+    print('sign res: ', peakstateSign)    
 
     if peakstateSign.status_code == 200:
         peakstateSign_body = peakstateSign.json()['response']['body']
@@ -155,7 +155,6 @@ if __name__ == '__main__':
                 closest_item = item
 
         if closest_item is not None:
-            print(f"가장 가까운 지역: {closest_item['frtrlNm']} - {closest_item['lat']} - {closest_item['lot']} - {closest_item['plcTypeCd']} - {closest_item['plcNm']} - {closest_item['explnCn']}")
             way_lat = closest_item['lat']
             way_lot = closest_item['lot']
 
@@ -172,8 +171,7 @@ if __name__ == '__main__':
         elif longitude < closest_item['lot']:
             way = 'toEast'
 
-        print(way, hikeID)
-        print(way_lat, way_lot)
+        print(way)
         updateWaybyDangerPlc(way_lat=way_lat, way_lot=way_lot, way=way, hikeID=hikeID)
 
 # 사용이 끝났으면 연결 닫기
