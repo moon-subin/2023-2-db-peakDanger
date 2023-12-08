@@ -171,7 +171,7 @@ if __name__ == '__main__':
         elif longitude < closest_item['lot']:
             way = 'toEast'
 
-        print(way)
+        print("이동 방향: ", way)
         updateWaybyDangerPlc(way_lat=way_lat, way_lot=way_lot, way=way, hikeID=hikeID)
 
 # 사용이 끝났으면 연결 닫기
